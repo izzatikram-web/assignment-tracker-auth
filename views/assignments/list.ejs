@@ -1,0 +1,107 @@
+<%- include('../partials/header', { title: 'Dashboard' }) %>
+
+<div class="container my-4 dd-main">
+
+  <!-- Page heading -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Tasks Dashboard</h2>
+    <a href="/assignments/add" class="btn btn-success">Add Task</a>
+  </div>
+
+  <!-- Stats -->
+  <div class="alert alert-light border mb-4">
+    <strong>Total Tasks:</strong> <%= assignments.length %> |
+    <strong>Completed:</strong> <%= assignments.filter(a => a.status === "Completed").length %> |
+    <strong>In Progress:</strong> <%= assignments.filter(a => a.status === "In Progress").length %> |
+    <strong>Not Started:</strong> <%= assignments.filter(a => a.status === "Not Started").length %>
+  </div>
+
+  <!-- Table -->
+  <div class="card dd-table mb-5">
+    <table class="table table-hover mb-0">
+      <thead class="table-success">
+        <tr>
+          <th>Course</th>
+          <th>Task</th>
+          <th>Details</th>
+          <th>Deadline</th>
+          <th>Weight (%)</th>
+          <th>Status</th>
+          <th>Urgency</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if (assignments.length === 0) { %>
+          <tr>
+            <td colspan="8" class="text-center text-muted py-4">
+              No tasks yet. Click "Add Task" to create one.
+            </td>
+          </tr>
+        <% } else { %>
+          <% assignments.forEach(a => { %>
+            <tr>
+              <td><%= a.courseName %></td>
+              <td><%= a.title %></td>
+
+              <!-- Details -->
+              <td>
+                <% if (a.description && a.description.trim().length > 0) { %>
+                  <%= a.description %>
+                <% } else { %>
+                  <span class="text-muted">—</span>
+                <% } %>
+              </td>
+
+              <!-- Deadline -->
+              <td>
+                <%= a.dueDate ? a.dueDate.toISOString().substring(0, 10) : '' %>
+              </td>
+
+              <!-- Weight -->
+              <td><%= typeof a.weightage !== 'undefined' ? a.weightage : '' %></td>
+
+              <!-- Status -->
+              <td>
+                <% if (a.status === "Completed") { %>
+                  <span class="status-badge completed">Completed</span>
+                <% } else if (a.status === "In Progress") { %>
+                  <span class="status-badge in-progress">In Progress</span>
+                <% } else { %>
+                  <span class="status-badge not-started">Not Started</span>
+                <% } %>
+              </td>
+
+              <td><%= a.priority %></td>
+
+              <!-- Actions -->
+              <td>
+                <a href="/assignments/edit/<%= a._id %>" class="btn btn-secondary btn-sm me-2">Edit</a>
+                <a href="/assignments/delete/<%= a._id %>" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr>
+          <% }) %>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+  <!--  Cute Anime Video Under Table -->
+  <div class="dashboard-video-wrapper mt-4 mb-5">
+    <video
+      class="dashboard-video"
+      src="/videos/animated-video.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+    ></video>
+
+    <div class="dashboard-video-fade"></div>
+
+  </div>
+
+</div>
+
+<%- include('../partials/footer') %>

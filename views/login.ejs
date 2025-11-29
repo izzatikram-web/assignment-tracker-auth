@@ -1,0 +1,25 @@
+<%- include('partials/header', { title: 'Login' }) %>
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body text-center">
+        <h2 class="mb-3">Login to DeadlineDefender</h2>
+        <p class="mb-4">
+          Choose how you want to sign in. You need to log in to add, edit, or delete tasks.
+        </p>
+
+        <a href="/auth/google" class="btn btn-primary w-100 mb-3">
+            Login with Google
+        </a>
+
+
+        <a href="/auth/github" class="btn btn-dark w-100">
+          Login with GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

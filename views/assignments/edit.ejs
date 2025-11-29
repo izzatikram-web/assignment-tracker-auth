@@ -1,0 +1,82 @@
+<%- include('../partials/header', { title: 'Edit Task' }) %>
+
+<h2 class="mb-3">Edit Task</h2>
+
+<form action="/assignments/edit/<%= assignment._id %>" method="POST">
+  <div class="mb-3">
+    <label class="form-label">Subject / Course</label>
+    <input
+      type="text"
+      name="courseName"
+      class="form-control"
+      value="<%= assignment.courseName %>"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Task Name</label>
+    <input
+      type="text"
+      name="title"
+      class="form-control"
+      value="<%= assignment.title %>"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Details (optional)</label>
+    <textarea
+      name="description"
+      class="form-control"
+      rows="3"
+    ><%= assignment.description || '' %></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Deadline</label>
+    <input
+      type="date"
+      name="dueDate"
+      class="form-control"
+      value="<%= assignment.dueDate.toISOString().substring(0,10) %>"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Progress</label>
+    <select name="status" class="form-select">
+      <option <%= assignment.status === 'Not Started' ? 'selected' : '' %>>Not Started</option>
+      <option <%= assignment.status === 'In Progress' ? 'selected' : '' %>>In Progress</option>
+      <option <%= assignment.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Urgency level</label>
+    <select name="priority" class="form-select">
+      <option <%= assignment.priority === 'Low' ? 'selected' : '' %>>Low</option>
+      <option <%= assignment.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+      <option <%= assignment.priority === 'High' ? 'selected' : '' %>>High</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Assignment Weightage (%)</label>
+    <input
+      type="number"
+      name="weightage"
+      class="form-control"
+      min="0"
+      max="100"
+      value="<%= typeof assignment.weightage !== 'undefined' ? assignment.weightage : '' %>"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Update</button>
+  <a href="/assignments" class="btn btn-secondary">Cancel</a>
+</form>
+
+<%- include('../partials/footer') %>

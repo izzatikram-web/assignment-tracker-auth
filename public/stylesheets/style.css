@@ -1,0 +1,178 @@
+/* ===== Global ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #1a1a1a;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ===== Navbar ===== */
+.dd-navbar {
+  background: #0f5132;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  height: 80px;                 /* Increased height */
+  display: flex;
+  align-items: center;
+}
+
+.dd-navbar .navbar-brand,
+.dd-navbar .nav-link {
+  color: #f0fff4 !important;
+  font-weight: 600;
+}
+
+.dd-navbar .nav-link:hover {
+  text-decoration: underline;
+}
+
+/* ===== Full-page background image ===== */
+.full-background {
+  position: fixed;
+  top: 80px;                    /* sits right under navbar height */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);   /* fills remaining page */
+  background-image: url("/images/download.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* ===== Hero layer (centered glass card) ===== */
+.home-hero-layer {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 120px;           /* moves card slightly lower */
+}
+
+/* ===== Glass card ===== */
+.glass-card {
+  width: 65%;
+  max-width: 900px;
+  padding: 40px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.glass-card h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.glass-card p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+/* ===== Buttons ===== */
+.dd-btn-primary {
+  background: #0b5d3f;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+}
+
+.dd-btn-primary:hover {
+  background: #094b32;
+}
+
+/* ===== Dashboard Tables ===== */
+.dd-table {
+  background: #e8f5e9;
+  border: 1px solid #b5d7c0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.dd-table thead {
+  background: #0f5132;
+  color: white;
+}
+
+.dd-table tbody tr:hover {
+  background: #d7eee2;
+}
+
+/* Status badges */
+.status-badge {
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-badge.completed {
+  background-color: #198754;
+  color: white;
+}
+
+.status-badge.in-progress {
+  background-color: #ffc107;
+  color: #533f03;
+}
+
+.status-badge.not-started {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.85rem;
+  color: #6c757d;
+  background: transparent;
+}
+
+/* ============================
+   Dashboard study video card
+   ============================ */
+/* Centered aesthetic video with soft blurred edges */
+/* Centered video box */
+.dashboard-video {
+  width: 750px;                   /* adjust size if you want */
+  max-width: 95%;
+  display: block;
+  margin: 40px auto;              /* KEEP center position */
+  border-radius: 22px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Blur ONLY the corners, NOT the video */
+.dashboard-video-container {
+  position: relative;
+  width: fit-content;
+  margin: 40px auto;
+}
+
+.dashboard-video-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+
+  /* EDGE BLUR EFFECT */
+  box-shadow:
+    0 0 110px 70px rgba(255, 255, 255, 0.95);
+
+  pointer-events: none;
+  z-index: 2;
+}

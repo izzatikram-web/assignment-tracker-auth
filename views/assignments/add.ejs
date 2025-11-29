@@ -1,0 +1,79 @@
+<%- include('../partials/header', { title: 'Add Task' }) %>
+
+<h2 class="mb-3">Add New Task</h2>
+
+<form action="/assignments/add" method="POST">
+  <div class="mb-3">
+    <label class="form-label">Subject / Course</label>
+    <input
+      type="text"
+      name="courseName"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Task Name</label>
+    <input
+      type="text"
+      name="title"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Details (optional)</label>
+    <textarea
+      name="description"
+      class="form-control"
+      rows="3"
+    ></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Deadline</label>
+    <input
+      type="date"
+      name="dueDate"
+      class="form-control"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Progress</label>
+    <select name="status" class="form-select">
+      <option>Not Started</option>
+      <option>In Progress</option>
+      <option>Completed</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Urgency level</label>
+    <select name="priority" class="form-select">
+      <option>Low</option>
+      <option selected>Medium</option>
+      <option>High</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Assignment Weightage (%)</label>
+    <input
+      type="number"
+      name="weightage"
+      class="form-control"
+      min="0"
+      max="100"
+      placeholder="e.g., 15"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save</button>
+  <a href="/assignments" class="btn btn-secondary">Cancel</a>
+</form>
+
+<%- include('../partials/footer') %>

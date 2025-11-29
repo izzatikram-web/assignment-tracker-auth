@@ -1,0 +1,19 @@
+<%- include('../partials/header', { title: 'Delete Assignment' }) %>
+<!-- Simple page title -->
+<h2>Delete Assignment</h2>
+<!-- Confirmation message for deleting an assignment -->
+<div class="alert alert-danger">
+  <p>Are you sure you want to delete this assignment?</p>
+  <ul>
+    <li><strong>Course:</strong> <%= assignment.courseName %></li>
+    <li><strong>Title:</strong> <%= assignment.title %></li>
+    <li><strong>Due Date:</strong> <%= assignment.dueDate.toLocaleDateString() %></li>
+  </ul>
+</div>
+<!-- Form to confirm deletion of an assignment -->
+<form action="/assignments/delete/<%= assignment._id %>" method="POST">
+  <button type="submit" class="btn btn-danger">Yes, Delete</button>
+  <a href="/assignments" class="btn btn-secondary">No, Go Back</a>
+</form>
+
+<%- include('../partials/footer') %>
