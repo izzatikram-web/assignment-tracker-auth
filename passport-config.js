@@ -27,7 +27,7 @@ function initialize(passport) {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         // now we force it to use the URL from env
-        callbackURL: process.env.GOOGLE_CALLBACK_URL,
+        callbackURL: baseURL + "/auth/google/callback",
 
       },
       async (accessToken, refreshToken, profile, done) => {
@@ -61,8 +61,8 @@ function initialize(passport) {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
        
-        callbackURL: process.env.GITHUB_CALLBACK_URL,
-
+        callbackURL: baseURL + "/auth/github/callback",
+        
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
