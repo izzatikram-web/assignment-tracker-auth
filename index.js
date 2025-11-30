@@ -54,6 +54,7 @@ app.use(
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+initializePassport(passport);
 
 // Make logged-in user available in all EJS views as "user"
 app.use((req, res, next) => {
