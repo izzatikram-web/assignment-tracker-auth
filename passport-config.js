@@ -1,4 +1,5 @@
 // passport-config.js
+const baseURL = process.env.BASE_URL || "http://localhost:3000";
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const GitHubStrategy = require("passport-github2").Strategy;
 const User = require("./models/User");
@@ -26,7 +27,8 @@ function initialize(passport) {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         // now we force it to use the URL from env
-        callbackURL: process.env.GOOGLE_CALLBACK_URL,
+        callbackURL: BASE_URL=http://localhost:3000/auth/google/callback ,
+
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
@@ -59,7 +61,8 @@ function initialize(passport) {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
        
-        callbackURL: process.env.GITHUB_CALLBACK_URL,
+        callbackURL: http://localhost:3000/auth/github/callback
+
       },
       async (accessToken, refreshToken, profile, done) => {
         try {

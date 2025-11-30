@@ -15,6 +15,7 @@ const assignmentRoutes = require('./routes/assignments');
 const authRoutes = require('./routes/auth');
 
 const app = express();
+app.set("trust proxy", 1); // trust first proxy (needed for some hosting providers)
 
 // ====== Connect to MongoDB ======
 mongoose
