@@ -4,6 +4,10 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const GitHubStrategy = require("passport-github2").Strategy;
 const User = require("./models/User");
 
+console.log("Google callback:", process.env.GOOGLE_CALLBACK_URL);
+console.log("GitHub callback:", process.env.GITHUB_CALLBACK_URL);
+console.log("BASE_URL =", process.env.BASE_URL);
+
 function initialize(passport) {
   // Serialize user into session (store Mongo _id)
   passport.serializeUser((user, done) => {
@@ -27,7 +31,7 @@ function initialize(passport) {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         // now we force it to use the URL from env
-        callbackURL: `${baseURL}/auth/google/callback`
+        callbackURL: process.env.GOOGLE_CALLBACK_URL
 
       },
       async (accessToken, refreshToken, profile, done) => {
@@ -61,7 +65,7 @@ function initialize(passport) {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
        
-        callbackURL:`${baseURL}/auth/github/callback`,
+        callbackURL: process.env.GITHUB_CALLBACK_URL,
 
         
       },
