@@ -1,5 +1,5 @@
 // passport-config.js
-const baseURL = process.env.BASE_URL || "http://localhost:3000";
+const baseURL = process.env.BASE_URL || "https://assignment-tracker-auth.onrender.com";
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const GitHubStrategy = require("passport-github2").Strategy;
 const User = require("./models/User");
